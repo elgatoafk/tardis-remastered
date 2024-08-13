@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "tardis-remastered"
+version = "0.1.0"
+description = ""
+authors = ["Olena <155203553+elgatoafk@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pydantic-settings = "^2.4.0"
+python-dotenv = "^1.0.1"
+datetime = "^5.5"
+python-dateutil = "^2.9.0.post0"
+fastapi = "^0.112.0"
+uvicorn = "^0.30.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
