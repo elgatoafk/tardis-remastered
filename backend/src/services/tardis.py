@@ -42,13 +42,14 @@ class TardisService:
             return None
 
     @staticmethod
-    def calculate_difference(user_time: datetime) -> timedelta or None:
+    def calculate_difference(current_time: datetime, user_time: datetime) -> timedelta or None:
         """
         Calculates the difference between the current time in London timezone
         and the provided user time.
 
         Args:
             user_time (datetime): The user's provided datetime object.
+            current_time (datetime): The current datetime object.
 
         Returns:
             timedelta: The difference between the current time and user_time.
@@ -56,7 +57,7 @@ class TardisService:
         """
         if isinstance(user_time, datetime) and user_time.tzinfo is not None:
             try:
-                current_time = datetime.now(tz=tz.gettz("Europe/London"))
+
                 diff = current_time - user_time
                 return diff
             except Exception as e:
@@ -67,7 +68,7 @@ class TardisService:
             return None
 
     @staticmethod
-    def format_input(time_input: datetime) -> str or None:
+    def format_input_to_string(time_input: datetime) -> str or None:
         """
         Formats the provided datetime object into a specific string format.
 
