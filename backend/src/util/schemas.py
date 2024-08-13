@@ -1,6 +1,5 @@
 import timedelta
 from pydantic import BaseModel
-from datetime import timedelta
 
 
 class TimeDiffRequest(BaseModel):
@@ -10,4 +9,4 @@ class TimeDiffRequest(BaseModel):
 
 class TimeDeltaRequest(BaseModel):
     datetime_str: str
-    timedelta: timedelta
+    timedelta_days: int

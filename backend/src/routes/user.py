@@ -1,10 +1,10 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 from dateutil import tz
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, HTTPException
 from starlette.responses import JSONResponse
 from backend.src.util.schemas import TimeDiffRequest, TimeDeltaRequest
 from backend.src.services.tardis import TardisService
-from backend.src import logger
+
 
 router = APIRouter()
 
@@ -37,7 +37,7 @@ async def calculate_time_diff(request: TimeDiffRequest):
         raise HTTPException(status_code=400, detail="Invalid input")
 
     current_time = datetime.now(tz=tz.UTC)
-    passing_input = TardisService.format_input_to_string(formatted_input)
+    passing_input = TardisService.format_to_string(formatted_input)
 
     if formatted_input > current_time:
         result = TardisService.calculate_difference(formatted_input, current_time)
@@ -57,9 +57,24 @@ async def calculate_time_diff(request: TimeDiffRequest):
 
 @router.get("/add-subtract-timedelta", response_model=JSONResponse)
 async def get_new_date(request: TimeDeltaRequest):
+    """
+       Adds or subtracts a timedelta to/from a given datetime and returns the resulting datetime.
+
+       Args:
+           request (TimeDeltaRequest): A Pydantic model containing:
+               - datetime_str (str): The user's input datetime as a string
+               - days (int): Number of days to add/subtract (default: 0).
+
+       Returns:
+           JSONResponse: A JSON response containing:
+               - result (str): The resulting datetime as a formatted string.
+
+       """
     try:
-        formatted_input = TardisService.convert_to_datetime(request.datetime_str, request.timezone)
+        formatted_input = TardisService.convert_to_datetime(request.datetime_str)
     except ValueError as ve:
         raise HTTPException(status_code=400, detail="Invalid input")
-    result = TardisService.add_timedelta(formatted_input, request.timezone)
+    user_timedelta = timedelta(days=request.timedelta_days)
+    result = TardisService.add_timedelta(formatted_input, user_timedelta)
+    result = TardisService.format_to_string(result)
     return JSONResponse({"result": result}, status_code=200)

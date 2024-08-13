@@ -12,7 +12,7 @@ class TardisService:
     RESULT_FORMAT_FUTURE = settings.DATETIME_FORMAT_RESULT_FUTURE
 
     @staticmethod
-    def convert_to_datetime(time_input: str, zone: str) -> datetime or None:
+    def convert_to_datetime(time_input: str, zone: str = None) -> datetime or None:
         """
         Converts a string containing date and time to a timezone-aware datetime object.
 
@@ -31,8 +31,7 @@ class TardisService:
             target_timezone = tz.gettz(zone)
 
             if target_timezone is None:
-                logger.error(f"Unable to find timezone for {time_input}")
-                raise ValueError(f"Invalid timezone: {zone}")
+                return time_input.astimezone(tz.UTC)
 
             return time_input.astimezone(target_timezone)
 
@@ -68,7 +67,7 @@ class TardisService:
             return None
 
     @staticmethod
-    def format_input_to_string(time_input: datetime) -> str or None:
+    def format_to_string(time_input: datetime) -> str or None:
         """
         Formats the provided datetime object into a specific string format.
 
