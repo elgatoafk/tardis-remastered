@@ -10,7 +10,7 @@
 }
 
 .dark-mode-toggle.dark {
-    background-color: #003B6F;
+    background-color: #003B6F !important;
 }
 
 .toggle-ball {
@@ -102,4 +102,8 @@ body.dark-mode .form-control {
 
 .navbar .navbar-nav {
     margin-left: auto;
+}
+
+.navbar {
+    background-color: #003B6F !important;
 }

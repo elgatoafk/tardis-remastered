@@ -18,18 +18,6 @@
     align-items: center;
 }
 
-/* Links inside the footer */
-.footer-link {
-    color: #8FA6CB;
-    margin-left: 5px;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.footer-link:hover {
-    color: #FC814A;
-}
-
 /* Dark mode styles */
 body.dark-mode .footer {
     background-color: #1a1a1a;
@@ -42,4 +30,18 @@ body.dark-mode .footer-link {
 
 body.dark-mode .footer-link:hover {
     color: rgba(231, 111, 81, 0.8);
+}
+
+.footer a {
+  color: #FAF3DD !important;
+  text-decoration: underline;
+}
+
+/* Additional hover effect */
+.footer a:hover {
+  color: #FC814A !important; 
+}
+
+.footer-link {
+    margin-left: 3px !important;
 }
