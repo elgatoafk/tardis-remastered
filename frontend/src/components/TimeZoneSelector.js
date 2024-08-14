@@ -4,6 +4,10 @@ import '../styles/TimeZoneSelector.css';
 import '../styles/DarkMode.css';
 import InfoIcon from '@mui/icons-material/Info';
 
+const apiUrl = process.env.REACT_APP_API_BASE_URL;
+const TZUrl = `${process.env.REACT_APP_API_BASE_URL}/user/timezones/`;
+const DiffUrl = `${process.env.REACT_APP_API_BASE_URL}/user/get-difference`;
+
 const TimeZoneSelector = () => {
     const [timezones, setTimezones] = useState([]);
     const [selectedTimezone, setSelectedTimezone] = useState('America/New_York');
@@ -14,7 +18,7 @@ const TimeZoneSelector = () => {
     const [isCopied, setIsCopied] = useState(false);
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/user/timezones/')
+        axios.get(TZUrl)
             .then(response => {
                 setTimezones(response.data.timezones);
             })
@@ -29,7 +33,7 @@ const TimeZoneSelector = () => {
             timezone: selectedTimezone,
         };
 
-        axios.post('http://127.0.0.1:8000/user/get-difference', data)
+        axios.post(DiffUrl, data)
             .then(response => {
                 setResult(response.data);
                 setErrorMessage('');

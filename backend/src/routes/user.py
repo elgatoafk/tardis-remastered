@@ -5,8 +5,8 @@ from sqlalchemy.orm import Session
 from starlette.responses import JSONResponse
 from backend.src.util.schemas import TimeDiffRequest, TimeDeltaRequest
 from backend.src.services.tardis import TardisService
-from src.util.db import get_db
-from src.util.models import TimeZone
+from backend.src.util.db import get_db
+from backend.src.util.models import TimeZone
 
 router = APIRouter()
 

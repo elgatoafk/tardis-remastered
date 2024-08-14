@@ -1,7 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from starlette.responses import JSONResponse
-
 from backend.src.util.db import get_db
 from backend.src.util.utility import create_timezone
 

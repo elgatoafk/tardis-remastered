@@ -4,6 +4,9 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import '../styles/DarkMode.css';
 import '../styles/TimeZoneSelector.css';
 
+const apiUrl = process.env.REACT_APP_API_BASE_URL;
+const DeltaURL = `${apiUrl}/add-subtract-timedelta`;
+
 const AddSubtractDays = () => {
     const [datetime, setDatetime] = useState('');
     const [days, setDays] = useState(0);
@@ -21,7 +24,7 @@ const AddSubtractDays = () => {
             timedelta_days: isAdd ? days : -days,
         };
 
-        axios.post('http://127.0.0.1:8000/user/add-subtract-timedelta', data)
+        axios.post(DeltaURL, data)
             .then(response => {
                 setResult(response.data);
                 setErrorMessage('');

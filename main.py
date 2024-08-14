@@ -1,19 +1,17 @@
 import os
-
 from sqlalchemy.orm import Session
 from starlette.middleware.cors import CORSMiddleware
-
 from backend.src.routes import admin, user
 from fastapi import FastAPI
 import uvicorn
-
 from backend.src.util.db import init_db, SessionLocal
-from src.util.models import TimeZone
+from backend.src.util.models import TimeZone
 
 app = FastAPI()
 
 origins = [
-    "http://localhost:3000",  # React development server
+    "http://localhost:3000", #React development server
+    "https://elgatoafk.github.io" #React on GH Pages
 ]
 
 app.add_middleware(
@@ -57,4 +55,4 @@ async def startup():
 
 if __name__ == "__main__":
     debug_mode = os.getenv('DEBUG_MODE', 'False').lower() == 'true'
-    uvicorn.run(app, host="127.0.0.1", port=8000, reload=debug_mode)
+    uvicorn.run(app, host="0.0.0.0", port=8000, reload=debug_mode)
