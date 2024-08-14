@@ -13,6 +13,8 @@
 - **Flexibility**: Currently, you can select from 4 predefined time zones, with future updates planned to allow for the addition of new ones.
 
 - **Precision**: Get the exact information you need in a streamlined manner, making your workflow smoother and more effective.
+- 
+- **Dark Mode**: Enjoy a smooth and eye-friendly dark mode, with a simple toggle switch to enable or disable it.
 
 ## Features
 
@@ -27,20 +29,25 @@
 
 ## Installation
 
-### Backend (FastAPI)
+### Backend (FastAPI with Poetry)
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/tardis-toolkit.git
-   cd tardis-toolkit
+   git clone https://github.com/elgatoafk/tardis-remastered.git
+   cd tardis-remastered
    ```
 
-2. Install the required dependencies:
+2. Install the required dependencies using Poetry:
    ```bash
-   pip install -r requirements.txt
+   poetry install
    ```
 
-3. Run the FastAPI server:
+3. Activate the virtual environment:
+   ```bash
+   poetry shell
+   ```
+
+4. Run the FastAPI server:
    ```bash
    uvicorn main:app --reload
    ```
@@ -67,13 +74,15 @@
 ## Usage
 
 - **Access the Toolkit**: Visit `http://localhost:3000` in your browser to start using the Tardis Toolkit.
+- 
 - **Calculate Time Difference**: Select a time zone, paste your datetime string, and hit submit to get the time difference.
+- 
 - **Add/Subtract Days**: Navigate to the 'Add/Subtract Days' page, enter your date, toggle the action (add or subtract), and see your result instantly.
 
 ## Future Enhancements
 
 - **Custom Time Zones**: Soon, you'll be able to add and manage your own time zones.
-- **Dark Mode**: A dark mode option with a smooth toggle is on the roadmap.
+
 
 ## Contributing
 
@@ -89,4 +98,3 @@ We welcome contributions! Please follow these steps to contribute:
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
