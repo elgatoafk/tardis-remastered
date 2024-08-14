@@ -13,7 +13,7 @@
 - **Flexibility**: Currently, you can select from 4 predefined time zones, with future updates planned to allow for the addition of new ones.
 
 - **Precision**: Get the exact information you need in a streamlined manner, making your workflow smoother and more effective.
-- 
+
 - **Dark Mode**: Enjoy a smooth and eye-friendly dark mode, with a simple toggle switch to enable or disable it.
 
 ## Features
