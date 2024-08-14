@@ -9,15 +9,15 @@ from backend.src.util.models import TimeZone
 
 app = FastAPI()
 
-origins = [
-    "http://localhost:3000", #React development server
-    "https://elgatoafk.github.io",
-    "https://glowing-biscuit-3ee457.netlify.app/" #React on GH Pages
-]
+# origins = [
+#     "http://localhost:3000", #React development server
+#     "https://elgatoafk.github.io",
+#     "https://*.netlify.app" #React on GH Pages
+# ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

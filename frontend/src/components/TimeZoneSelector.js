@@ -89,7 +89,7 @@ const TimeZoneSelector = () => {
                 </div>
                 <div className="col-md-8">
                     <div className="right-panel p-3 rounded">
-                        <h2>Enter Datetime</h2> {/* Match heading style */}
+                        <h2>Enter date and time</h2> {/* Match heading style */}
                         <form id="main-form" onSubmit={handleSubmit}>
                             <div className="mb-3">
                                 <textarea
@@ -97,7 +97,7 @@ const TimeZoneSelector = () => {
                                     className="form-control datetime-input"
                                     value={datetime}
                                     onChange={(e) => setDatetime(e.target.value)}
-                                    placeholder="Enter datetime in string format"
+                                    placeholder="Waiting for input..."
                                     required
                                 />
                             </div>

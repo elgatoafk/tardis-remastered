@@ -62,7 +62,7 @@ const AddSubtractDays = () => {
             <div className="row justify-content-center">
                 <div className="col-md-6">
                     <div className="left-panel p-3 rounded">
-                        <h2>Enter Datetime</h2>
+                        <h2>Enter date and time</h2>
                         <form id="main-form" onSubmit={handleSubmit}>
                             <div className="mb-3">
                                 <textarea
@@ -70,7 +70,7 @@ const AddSubtractDays = () => {
                                     className="form-control datetime-input"
                                     value={datetime}
                                     onChange={(e) => setDatetime(e.target.value)}
-                                    placeholder="Enter datetime in string format"
+                                    placeholder="Waiting for input..."
                                     required
                                 />
                             </div>
