@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../styles/TimeZoneSelector.css';  // Custom CSS
+import '../styles/TimeZoneSelector.css';
+import InfoIcon from '@mui/icons-material/Info';
 
 const TimeZoneSelector = () => {
     const [timezones, setTimezones] = useState([]);
-    const [selectedTimezone, setSelectedTimezone] = useState('America/New_York');  // Default to "America/New_York"
+    const [selectedTimezone, setSelectedTimezone] = useState('America/New_York');  
     const [datetime, setDatetime] = useState('');
     const [result, setResult] = useState(null);
-    const [errorMessage, setErrorMessage] = useState('');  // Track error messages from the API
+    const [errorMessage, setErrorMessage] = useState('');
     const [copyMessage, setCopyMessage] = useState('');
-    const [isCopied, setIsCopied] = useState(false);  // Track if result is copied
+    const [isCopied, setIsCopied] = useState(false);
 
     useEffect(() => {
-        // Fetch the timezones from the backend
         axios.get('http://127.0.0.1:8000/user/timezones/')
             .then(response => {
-                setTimezones(response.data.timezones);  // Store the full timezone format
+                setTimezones(response.data.timezones);
             })
             .catch(error => console.error('Error fetching timezones:', error));
     }, []);
@@ -23,19 +23,17 @@ const TimeZoneSelector = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // Create the data object matching the TimeDiffRequest schema
         const data = {
             datetime_str: datetime,
             timezone: selectedTimezone,
         };
 
-        // Send a POST request to the backend with the data object
         axios.post('http://127.0.0.1:8000/user/get-difference', data)
             .then(response => {
                 setResult(response.data);
-                setErrorMessage('');  // Clear any previous error message
-                setCopyMessage('');  // Clear any previous copy message
-                setIsCopied(false);  // Reset the copied state
+                setErrorMessage('');
+                setCopyMessage('');
+                setIsCopied(false);
             })
             .catch(error => {
                 if (error.response && error.response.data.detail) {
@@ -43,7 +41,7 @@ const TimeZoneSelector = () => {
                 } else {
                     setErrorMessage('An unexpected error occurred. Please try again.');
                 }
-                setResult(null);  // Clear any previous result
+                setResult(null);
             });
     };
 
@@ -112,6 +110,7 @@ const TimeZoneSelector = () => {
                 <div
                     className={`result-container mt-4 p-3 rounded ${isCopied ? 'copied' : ''}`}
                     onClick={handleCopyToClipboard}
+                    style={{ position: 'relative' }}
                 >
                     <h2>Result:</h2> {/* Match heading color */}
                     {result.future_warning && <p className="warning-text">Warning: The input datetime is in the future!
@@ -119,6 +118,10 @@ const TimeZoneSelector = () => {
                     <p className="result-text">Calculated with: {result.calculated_from}</p>
                     <p className="result-text">Time Difference: {result.result}</p>
                     {copyMessage && <p className="copy-message">{copyMessage}</p>}
+                    {/* Info Bubble */}
+                    <div className="info-bubble" title="Click anywhere to copy the result to your clipboard">
+                        <InfoIcon />
+                    </div>
                 </div>
             )}
         </div>

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-import '../styles/TimeZoneSelector.css';  // Reuse the same CSS for styling
+import '../styles/TimeZoneSelector.css';
 
 const AddSubtractDays = () => {
     const [datetime, setDatetime] = useState('');
     const [days, setDays] = useState(0);
-    const [isAdd, setIsAdd] = useState(true);  // Toggle between adding and subtracting days
+    const [isAdd, setIsAdd] = useState(true);
     const [result, setResult] = useState(null);
     const [errorMessage, setErrorMessage] = useState('');
     const [copyMessage, setCopyMessage] = useState('');
@@ -15,19 +15,17 @@ const AddSubtractDays = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // Create the data object matching the TimeDeltaRequest schema
         const data = {
             datetime_str: datetime,
             timedelta_days: isAdd ? days : -days,
         };
 
-        // Send a POST request to the backend with the data object
         axios.post('http://127.0.0.1:8000/user/add-subtract-timedelta', data)
             .then(response => {
                 setResult(response.data);
-                setErrorMessage('');  // Clear any previous error message
-                setCopyMessage('');  // Clear any previous copy message
-                setIsCopied(false);  // Reset the copied state
+                setErrorMessage('');
+                setCopyMessage('');
+                setIsCopied(false);
             })
             .catch(error => {
                 if (error.response && error.response.data.detail) {
@@ -35,7 +33,7 @@ const AddSubtractDays = () => {
                 } else {
                     setErrorMessage('An unexpected error occurred. Please try again.');
                 }
-                setResult(null);  // Clear any previous result
+                setResult(null);
             });
     };
 
@@ -113,10 +111,15 @@ const AddSubtractDays = () => {
                         <div
                             className={`result-container mt-4 p-3 rounded ${isCopied ? 'copied' : ''}`}
                             onClick={handleCopyToClipboard}
+                            style={{ position: 'relative' }}
                         >
                             <h2>Result:</h2>
                             <p className="result-text">Result: {result.result}</p>
                             {copyMessage && <p className="copy-message">{copyMessage}</p>}
+                            {/* Info Bubble */}
+                            <div className="info-bubble" title="Click anywhere to copy the result to your clipboard">
+                                <InfoOutlinedIcon />
+                            </div>
                         </div>
                     )}
                 </div>

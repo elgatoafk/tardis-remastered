@@ -98,8 +98,8 @@ async def get_new_date(request: TimeDeltaRequest):
        """
     try:
         formatted_input = TardisService.convert_to_datetime(request.datetime_str)
-    except ValueError as ve:
-        raise HTTPException(status_code=400, detail="Invalid input")
+    except HTTPException as http_exc:
+        raise http_exc
     user_timedelta = timedelta(days=request.timedelta_days)
     result = TardisService.add_timedelta(formatted_input, user_timedelta)
     result = TardisService.format_to_string(result)

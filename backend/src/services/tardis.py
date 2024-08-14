@@ -65,7 +65,8 @@ class TardisService:
                 return diff
             except Exception as e:
                 logger.error(f"Error calculating difference for {user_time}: {e}")
-                return None
+                raise HTTPException(status_code=401, detail=f"Error converting time '{current_time}'. Please check your "
+                                                            f"input and try again.")
         else:
             logger.error(f"Invalid time input: {user_time}")
             return None
