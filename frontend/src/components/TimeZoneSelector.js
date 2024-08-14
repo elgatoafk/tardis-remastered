@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/TimeZoneSelector.css';
+import '../styles/DarkMode.css';
 import InfoIcon from '@mui/icons-material/Info';
 
 const TimeZoneSelector = () => {
     const [timezones, setTimezones] = useState([]);
-    const [selectedTimezone, setSelectedTimezone] = useState('America/New_York');  
+    const [selectedTimezone, setSelectedTimezone] = useState('America/New_York');
     const [datetime, setDatetime] = useState('');
     const [result, setResult] = useState(null);
     const [errorMessage, setErrorMessage] = useState('');

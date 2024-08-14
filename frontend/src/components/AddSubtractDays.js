@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import '../styles/DarkMode.css';
 import '../styles/TimeZoneSelector.css';
 
 const AddSubtractDays = () => {
