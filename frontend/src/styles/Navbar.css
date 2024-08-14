@@ -107,3 +107,9 @@ body.dark-mode .form-control {
 .navbar {
     background-color: #003B6F !important;
 }
+
+.brand-icon {
+    height: 50px !important;
+    width: 50px !important;
+    margin-right: 10px;
+}

@@ -22,10 +22,21 @@ const Navbar = () => {
         localStorage.setItem('darkMode', !darkMode);
     };
 
+
+    const brandIcon = darkMode ? '/tardis-dark.svg' : '/tardis.svg';
+
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container-fluid justify-content-between">
-                <h1 className="navbar-brand">Tardis Toolkit</h1>
+                <h1 className="navbar-brand d-flex align-items-center">
+                    <img
+                        src={process.env.PUBLIC_URL + brandIcon}
+                        alt="Brand Icon"
+                        className="brand-icon"
+                        style={{ marginRight: '10px', width: '30px', height: '30px' }} // Adjust size and margin as needed
+                    />
+                    Tardis Toolkit
+                </h1>
                 <div className="toggle-container">
                     <div className={`dark-mode-toggle ${darkMode ? 'dark' : 'light'}`} onClick={toggleDarkMode}>
                         <div className={`toggle-ball ${darkMode ? 'dark' : 'light'}`}>
