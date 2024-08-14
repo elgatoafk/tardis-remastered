@@ -11,7 +11,8 @@ app = FastAPI()
 
 origins = [
     "http://localhost:3000", #React development server
-    "https://elgatoafk.github.io" #React on GH Pages
+    "https://elgatoafk.github.io",
+    "https://glowing-biscuit-3ee457.netlify.app/" #React on GH Pages
 ]
 
 app.add_middleware(
