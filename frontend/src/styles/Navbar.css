@@ -1,0 +1,13 @@
+.navbar-brand {
+    font-family: 'Roboto Slab', serif;
+    color: #FAF3DD;  /* Light Beige */
+}
+
+.nav-link {
+    font-family: 'Roboto', sans-serif;
+    color: #FC814A;  /* Orange */
+}
+
+.nav-link:hover {
+    color: #FAF3DD;  /* Light Beige */
+}

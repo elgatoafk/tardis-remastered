@@ -1,4 +1,7 @@
 from datetime import timedelta, datetime
+
+from fastapi import HTTPException
+
 from backend.src.logger import logger
 from dateutil import parser, tz
 
@@ -31,14 +34,15 @@ class TardisService:
             target_timezone = tz.gettz(zone)
 
             if target_timezone is None:
-                return time_input.astimezone(tz.UTC)
+                return time_input.replace(tzinfo=tz.UTC)
 
-            return time_input.astimezone(target_timezone)
+            return time_input.replace(tzinfo=tz.gettz(zone))
 
         except (ValueError, TypeError, OverflowError) as e:
 
             logger.error(f"Error converting time '{time_input}' with timezone '{zone}': {e}")
-            return None
+            raise HTTPException(status_code=401, detail=f"Error converting time '{time_input}'. Please check your "
+                                                        f"input and try again.")
 
     @staticmethod
     def calculate_difference(current_time: datetime, user_time: datetime) -> timedelta or None:

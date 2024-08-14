@@ -1,6 +1,6 @@
+from sqlalchemy import create_engine
 from sqlalchemy.exc import OperationalError
-from sqlalchemy.orm import declarative_base
-from sqlalchemy import create_engine, sessionmaker
+from sqlalchemy.orm import declarative_base, sessionmaker
 
 from backend.src.config import settings
 
@@ -20,6 +20,8 @@ def get_db():
         except OperationalError as e:
             session.rollback()
             raise e
+        finally:
+            session.close()
 
 
 def init_db():
