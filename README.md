@@ -90,6 +90,3 @@ We welcome contributions! Please follow these steps to contribute:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
----
-
-This version includes instructions for both the backend (FastAPI) and the frontend (React). Adjust it as needed!
