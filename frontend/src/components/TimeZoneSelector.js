@@ -4,8 +4,9 @@ import '../styles/TimeZoneSelector.css';
 import '../styles/DarkMode.css';
 import InfoIcon from '@mui/icons-material/Info';
 
-const TZUrl = `/user/timezones/`;
-const DiffUrl = `/user/get-difference`;
+const apiUrl = process.env.REACT_APP_API_BASE_URL;
+const TZUrl = `${apiUrl}/user/timezones/`;
+const DiffUrl = `${apiUrl}/user/get-difference`;
 
 const TimeZoneSelector = () => {
     const [timezones, setTimezones] = useState([]);
