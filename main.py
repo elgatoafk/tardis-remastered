@@ -9,14 +9,9 @@ from backend.src.util.models import TimeZone
 
 app = FastAPI()
 
-origins = [
-    "http://localhost:3000",  #React development server
-    "https://shimmering-toffee-35666a.netlify.app"
-]
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[origins],
+    allow_origins=[*],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
