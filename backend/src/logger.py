@@ -2,7 +2,7 @@ import logging
 import os
 from datetime import datetime
 
-log_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'logs')
+log_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', "/tmp/logs")
 os.makedirs(log_dir, exist_ok=True)
 
 current_date = datetime.now().strftime('%Y-%m-%d')
