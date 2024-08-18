@@ -4,8 +4,8 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import '../styles/DarkMode.css';
 import '../styles/TimeZoneSelector.css';
 
-const apiUrl = process.env.REACT_APP_API_BASE_URL;
-const DeltaURL = `${apiUrl}/user/add-subtract-timedelta`;
+
+const DeltaURL = `/user/add-subtract-timedelta`;
 
 const AddSubtractDays = () => {
     const [datetime, setDatetime] = useState('');
