@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "npm run build --output public",
+    "build": "react-scripts build && ls -la build && echo 'Build directory exists and is accessible'",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build"
