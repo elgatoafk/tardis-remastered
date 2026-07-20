@@ -1,0 +1,19 @@
+services:
+  tardis-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: tardis-backend
+
+    ports:
+      - "8000:8000"
+
+    restart: unless-stopped
+
+    environment:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+
+    volumes:
+      - .:/tardis-backend
